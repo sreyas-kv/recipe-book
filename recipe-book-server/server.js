@@ -8,6 +8,10 @@ const morgan = require('morgan');
 const router = express.Router();
 const app = express();
 
+const bodyParser = require('body-parser');
+app.use(express.json());
+app.use(bodyParser.json());
+
 //Mongoose Promise
 mongoose.Promise = global.Promise;
 const { PORT, DATABASE_URL } = require('./config');
@@ -15,8 +19,15 @@ const { PORT, DATABASE_URL } = require('./config');
 //Enabling Morgan
 app.use(require('morgan')('common'));
 
+
+//Setting the routes
+const recipes = require('./routes/recipes');
+const login = require('./routes/auth/login');
+const signup = require('./routes/auth/signup');
+const rating = require('./routes/rating');
+
 //CORS
-app.use(function(res, req, next){
+app.use(function(req, res, next){
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH, DELETE');
@@ -25,6 +36,21 @@ app.use(function(res, req, next){
     }
     next();
 });
+
+
+
+app.use('/recipes', recipes);
+app.use('/login', login);
+app.use('/signup', signup);
+app.use('/rating', rating);
+
+
+
+
+
+
+
+
 
 //Catch all endpoint if client makes request to non existent end point
 app.use('*', function(req, res) {
