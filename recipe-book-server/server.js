@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const passport = require('passport');
 
 const router = express.Router();
 const app = express();
@@ -15,6 +16,8 @@ app.use(bodyParser.json());
 //Mongoose Promise
 mongoose.Promise = global.Promise;
 const { PORT, DATABASE_URL } = require('./config');
+
+const { localStrategy, jwtStrategy } = require('./routes/auth/strategies')
 
 //Enabling Morgan
 app.use(require('morgan')('common'));
@@ -37,19 +40,22 @@ app.use(function(req, res, next){
     next();
 });
 
-
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 app.use('/recipes', recipes);
 app.use('/login', login);
 app.use('/signup', signup);
 app.use('/rating', rating);
 
+const jwtAuth = passport.authenticate('jwt', { session: false });
 
-
-
-
-
-
+//Protected endpoint which needs a valid JWT to access it
+app.get('/protected', jwtAuth, (req,res) => {
+    return res.json({
+        data: 'recipe-book'
+    });
+});
 
 
 //Catch all endpoint if client makes request to non existent end point

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './Header';
-import Signup from './Signup';
+import SignupForm from './SignupForm';
 import Recipes from './Recipes';
 import Login from './Login';
 
@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="App">
             <Header />
-            <Signup />
+            <Recipes />
       </div>
     )
   }

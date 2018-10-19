@@ -1,4 +1,8 @@
-const mongoose = require("mongoose");
+'use strict';
+
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 mongoose.Promise = global.Promise;
 
@@ -18,6 +22,15 @@ userSchema.methods.serialize = function() {
     };
 };
 
+//Validating the password
+userSchema.methods.validatePassword = function(password){
+    return bcrypt.compare(password, this.password);
+};
+
+//Hash the password
+userSchema.statics.hashPassword = function(password){
+    return bcrypt.hash(password, 10);
+};
 
 const User = mongoose.model("User", userSchema, );
 

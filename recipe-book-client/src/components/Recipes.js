@@ -9,36 +9,40 @@ export class Recipes extends React.Component{
   }
 
   render(){
+    console.log('PROPS:', this.props.recipes);
+    // const rec =  this.props.recipes.map(recipes => {
+    //   return recipes.ingeridents;
+    // }); 
+    // console.log('Rec: ', rec);
 
-    const rec =  this.props.recipes.map(recipes => {
-      return recipes.ingeridents;
-    }); 
-    console.log('Rec: ', rec);
 
-
-    const ingeridents = rec.map(value => {
-      <li>{value}</li>
-    })
-    console.log('ingeridents: ', ingeridents);
-
+    // const ingeridents = rec.map(value => {
+    //   <li>{value}</li>
+    // })
+    // console.log('ingeridents: ', ingeridents);
 
     //All Recipes Mapped 
+    console.log('Props', this.props);
     const allRecipes = this.props.recipes.map((recipe,index) => (
       <div key={index}>
         <h2>{recipe.recipeName}</h2>
         <p>Cooking Time: {recipe.cookingTime}</p>
         <p>Ingeridents:
-        <li>{recipe.ingeridents}</li></p>
+        <ul>
+        {recipe.ingeridents.map(bullet => <li>{bullet}</li>)}
+        </ul></p>
         <p>Directions: 
-        <li>{recipe.directions}</li></p>
+        <ul>
+        {recipe.directions.map(bullet => <li>{bullet}</li>)}
+          </ul></p>
       </div>
     ));
 
-   
 
     return (
       <div className="recipe-parent">
-      {allRecipes}
+      {/* {allRecipes} */}
+      <h1>Hello World</h1>
       </div>
     )
   } 

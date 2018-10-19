@@ -1,25 +1,37 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import {Field, reduxForm, focus} from 'redux-form';
+import Input from './Input';
+import {login} from '../actions/auth';
+import {required, nonEmpty} from './validator';
 
 export class Login extends Component {
-  static propTypes = {
-    prop: PropTypes
+  onSubmit(values){
+    return this.props.dispatch(login(values.username, values.password));
   }
 
   render() {
+    let error;
+    if(this.props.error){
+      error = (
+        <div className="form-error" aria-live="polite">
+        {this.props.error}</div>
+      );
+    }
+
     return (
-      <div>
-        <form>
-          <label>User Name: </label>
-          <input type="text" value="Enter user name"></input><br />
-          <label>Password</label>
-          <input type="password" value="Enter password"></input><br /><br />
-          <input type="submit"value="SignIn"></input>
-          <input type="button"value="Cancel"></input>
-        </form>
-      </div>
-    )
+      <form className="login-form" onSubmit={this.props.handleSubmit(values=>this.onSubmit(values))}>
+      {error}
+      <lable htmlFor="username">Email</lable>
+      <Field component={Input} type="text" name="username" id="username" validate={[required, nonEmpty]} />
+      <lable htmlFor="password">Password</lable>
+      <Field component={Input} type="password" name="password" id="password" validate={[required, nonEmpty]} />
+      <button disabled={this.props.pristine || this.props.submitting}>Login</button>
+      </form>
+    );
   }
 }
-export default Login;
+
+export default reduxForm({
+  form: 'login',
+  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+})(Login);

@@ -1,14 +1,8 @@
-import * as actions from '../actions/actions';
+import { combineReducers } from 'redux';
+import {recipesReducer} from './recipeReducer';
+import {createNewUserReducer} from './signupReducer';
 
-const initialState = {
-    recipes: []
-};
-
-export const recipesReducer = (state=initialState, action) => {
-    if(action.type === actions.FETCH_RECIPES_SUCESS){
-        return action.recipes;
-    }
-    else{
-        return state;
-    }
-}
+export const rootReducer = combineReducers({
+    recipes: recipesReducer,
+    user: createNewUserReducer
+  });
