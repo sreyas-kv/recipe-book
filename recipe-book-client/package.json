@@ -4,10 +4,11 @@
   "private": true,
   "dependencies": {
     "jwt-decode": "^2.2.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
     "react-redux": "^5.0.7",
     "react-redux-form": "^1.16.10",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "redux": "^4.0.1",
     "redux-form": "^7.4.2",
@@ -21,6 +22,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.6.1",
     "eslint-plugin-react-redux": "^2.3.0"
   }

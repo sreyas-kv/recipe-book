@@ -41,7 +41,7 @@ const storeAuthInfo = (authToken, dispatch) => {
     saveAuthToken(authToken);
 };
 
-export const login = (email, password) => dispatch => {
+export const login = (username, password) => dispatch => {
     dispatch(authRequest());
     return(
         fetch('http://localhost:8080/login', {
@@ -50,7 +50,7 @@ export const login = (email, password) => dispatch => {
                 'content-Type': 'application/json'
             },
             body: JSON.stringify({
-                email,
+                username,
                 password
             })
         })
@@ -72,7 +72,7 @@ export const login = (email, password) => dispatch => {
 
 export const refreshAuthToken = () => (dispatch, getState) => {
     dispatch(authRequest());
-    const authToken = getState().authauthToken;
+    const authToken = getState().auth.authauthToken;
     return fetch(`http://localhost:8080/refresh`, {
         method: 'POST',
         headers: {

@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 //     .create({
 //         firstName: req.body.firstName,
 //         lastName: req.body.lastName,
-//         email: req.body.email,
+//         username: req.body.username,
 //         password: req.body.password
 //     })
 //     .then(user => res.status(201).json(user.serialize()))
@@ -30,7 +30,8 @@ router.get('/', (req, res) => {
 
 //Signup new user
 router.post('/', jsonParser, (req, res) => {
-    const requiredFields = ['email', 'password'];
+    // console.log('req body',req.body);
+    const requiredFields = ['username', 'password'];
     const missingField = requiredFields.find(field => !(field in req.body));
 
     if (missingField) {
@@ -42,7 +43,7 @@ router.post('/', jsonParser, (req, res) => {
         });
     }
 
-    const stringFields = ['email', 'password', 'firstname', 'lastname'];
+    const stringFields = ['username', 'password', 'firstname', 'lastname'];
     const nonStringField = stringFields.find(
         field => field in req.body && typeof req.body[field] !== 'string');
     if (nonStringField) {
@@ -54,7 +55,7 @@ router.post('/', jsonParser, (req, res) => {
         });
     }
     //Triming the input
-    const explicityTrimmedFields = ['email', 'password'];
+    const explicityTrimmedFields = ['username', 'password'];
     const nonTrimmedField = explicityTrimmedFields.find(
         field => req.body[field].trim() !== req.body[field]
     );
@@ -69,7 +70,7 @@ router.post('/', jsonParser, (req, res) => {
     }
 
     const sizedFields = {
-        email: {
+        username: {
             min: 1
         },
         password: {
@@ -98,19 +99,19 @@ router.post('/', jsonParser, (req, res) => {
         });
     }
 
-    let { email, password, firstName = '', lastName = '' } = req.body;
+    let { username, password, firstName = '', lastName = '' } = req.body;
     firstName = firstName.trim();
     lastName = lastName.trim();
-    email = email.trim();
-    return User.find({ email })
+    username = username.trim();
+    return User.find({ username })
         .count()
         .then(count => {
             if (count > 0) {
                 return Promise.reject({
                     code: 422,
                     reason: 'ValidationError',
-                    message: 'Email already exists',
-                    location: 'email'
+                    message: 'username already exists',
+                    location: 'username'
                 });
             }
             return User.hashPassword(password);
@@ -119,18 +120,19 @@ router.post('/', jsonParser, (req, res) => {
             return User.create({
                 firstName,
                 lastName,
-                email,
+                username,
                 password: hash
                
             });
         })
         .then(user => {
-            return res.status(201).json(user.serialize());
+            return res.status(201).json(user.serialise());
         })
         .catch(err => {
             if (err.reason === 'ValidationError') {
                 return res.status(err.code).json(err);
             }
+            console.error(err);
             res.status(500).json({ code: 500, message: 'Internal server error' });
         });
 });

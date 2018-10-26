@@ -2,23 +2,25 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
-import SignupForm from './SignupForm';
+import Login from './Login';
 
-export function SignupPage(props){
+export function LandingPage(props){
     if(props.loggedIn){
-        return <Redirect to='/Recipes' />;
+        return <Redirect to="/Recipes" />;
     }
-    return (
+    return(
         <div className="home">
-        <h2>Signup for Recipe Book account</h2>
-        <SignupForm />
-        <Link to="/">Login</Link>
+        <h2>Welcome to Recipes Book</h2>
+        <Login />
+        <Link to="/signup">Singup</Link>
+
         </div>
     );
 }
+
 
 const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(SignupPage);
+export default connect(mapStateToProps)(LandingPage);

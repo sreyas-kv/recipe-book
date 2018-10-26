@@ -26,25 +26,31 @@ app.use(require('morgan')('common'));
 //Setting the routes
 const recipes = require('./routes/recipes');
 const login = require('./routes/auth/login');
+// const refresh = require('./routes/auth/login');
 const signup = require('./routes/auth/signup');
 const rating = require('./routes/rating');
 
 //CORS
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH, DELETE');
-    if(req.method === 'OPTIONS'){
-        return res.setEncoding(204);
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+    if (req.method === 'OPTIONS') {
+      return res.send(204);
     }
     next();
-});
+  });
+
+
+
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
+
 app.use('/recipes', recipes);
 app.use('/login', login);
+// app.use('/refresh', refresh);
 app.use('/signup', signup);
 app.use('/rating', rating);
 

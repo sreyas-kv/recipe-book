@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from './Input';
 import {login} from '../actions/auth';
 import {required, nonEmpty} from './validator';
 
-export class Login extends Component {
+export class Login extends React.Component {
   onSubmit(values){
     return this.props.dispatch(login(values.username, values.password));
   }
@@ -21,9 +21,9 @@ export class Login extends Component {
     return (
       <form className="login-form" onSubmit={this.props.handleSubmit(values=>this.onSubmit(values))}>
       {error}
-      <lable htmlFor="username">Email</lable>
+      <label htmlFor="username">Email</label>
       <Field component={Input} type="text" name="username" id="username" validate={[required, nonEmpty]} />
-      <lable htmlFor="password">Password</lable>
+      <label htmlFor="password">Password</label>
       <Field component={Input} type="password" name="password" id="password" validate={[required, nonEmpty]} />
       <button disabled={this.props.pristine || this.props.submitting}>Login</button>
       </form>

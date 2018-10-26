@@ -4,7 +4,7 @@ import {SubmissionError} from 'redux-form';
 import {normalizeResponseErrors} from './utils';
 
 export const registerUser = user => dispatch => {
-    return fetch('http://localhost:8080/signup', {
+    return fetch('http://localhost:8080/recipes',{
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -15,7 +15,7 @@ export const registerUser = user => dispatch => {
     .then(res => res.json())
     .catch(err => {
         const {reason, message, location} = err;
-        if(reason === 'ValidaitionError'){
+        if(reason === 'ValidationError'){
             return Promise.reject(
                 new SubmissionError({
                     [location]: message
