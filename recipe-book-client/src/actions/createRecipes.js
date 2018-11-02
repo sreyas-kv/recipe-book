@@ -3,13 +3,13 @@ import {SubmissionError} from 'redux-form';
 // import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
-export const registerUser = user => dispatch => {
+export const createRecipe = newRecipe => {
     return fetch('http://localhost:8080/recipes',{
         method: 'POST',
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(newRecipe)
     })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())

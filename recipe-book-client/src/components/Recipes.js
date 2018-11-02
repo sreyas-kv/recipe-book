@@ -1,45 +1,63 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import { fetchRecipes } from '../actions/recipes';
+import { fetchRecipes, displayRecipe } from '../actions/recipes';
+import { Link, Redirect } from 'react-router-dom';
+import SelectedRecipe from './SelectedRecipe';
 
 export class Recipes extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchRecipes());
   }
 
+
+  // handleClick(event) {
+  //   console.log(event.target.getAttribute('key'));
+  // }
+
+
+  displayRecipe(recipe) {
+    this.props.dispatch(displayRecipe(recipe));
+    console.log('Hello');
+    // this.props.history.push(`/SelectedRecipe`)
+  }
+
+
   render() {
     const rec = this.props.recipes.recipes.map(recipes => {
       return recipes.ingeridents;
     });
 
-
     const ingeridents = rec.map(value => {
       <li>{value}</li>
     })
 
+    // console.log('Recipe Props', this.props);
     // All Recipes Mapped 
-    const allRecipes = this.props.recipes.recipes.map((recipe,index) => (
-      <div key={index}>
-        <h2>{recipe.recipeName}</h2>
-        <p>Cooking Time: {recipe.cookingTime}</p>
-        <span><strong>Ingeridents</strong>:
-        <ul>
-        {recipe.ingeridents.map((bullet, index) => <li key={index}>{bullet}</li>)}
-        </ul></span>
-        <span><strong>Directions</strong>:
-        <ul>
-        {recipe.directions.map((bullet, index) => <li key={index}>{bullet}</li>)}
-          </ul></span>
+    const allRecipes = this.props.recipes.recipes.map((recipe) => (
+      <div key={recipe.id}>
+        {/* <button
+          type="button"
+          onClick={() => this.props.history.push(`/SelectedRecipe/${recipe.id}`)}>{recipe.recipeName}
+        </button> */}
+
+        <button
+          type="button"
+          id={recipe.id}
+          onClick={this.displayRecipe}>{recipe.recipeName}
+          {/* onClick={() => this.props.dispatch(displayRecipe)}>{recipe.recipeName} */}
+        </button>
+        {/* onclick history push */}
       </div>
-    ));
+    ))
+
 
     return (
       <div className="recipe-parent">
         {allRecipes}
-        <h1>Hello World</h1>
       </div>
-    )
+    );
   }
 }
 
@@ -47,7 +65,8 @@ Recipes.defaultProps = {
   title: 'This is default props for Recipes'
 }
 const mapsStateToProps = state => ({
-  recipes: state.recipes
+  recipes: state.recipes,
+  selected: state.recipes.recipes
 });
 
 export default connect(mapsStateToProps)(Recipes);

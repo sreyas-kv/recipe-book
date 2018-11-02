@@ -9,7 +9,6 @@ const passwordLength = length({ min: 6, max: 72 });
 const matchesPassword = matches('password');
 
 export class SignupForm extends React.Component {
-  //   return fetch('http://localhost:8080/signup'
   onSubmit(values) {
     const { username, password, firstName, lastName } = values;
     const user = { username, password, firstName, lastName };

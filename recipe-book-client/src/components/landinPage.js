@@ -3,17 +3,20 @@ import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
 import Login from './Login';
+import './landingPage.css';
 
 export function LandingPage(props){
     if(props.loggedIn){
         return <Redirect to="/Recipes" />;
     }
     return(
-        <div className="home">
-        <h2>Welcome to Recipes Book</h2>
+        <div className="landing-page">
+        <h2>Welcome to Recipe Book</h2>
+        <h4>Please Login to continue</h4>
         <Login />
-        <Link to="/signup">Singup</Link>
-
+        <div className="link-div">
+        <Link to="/signup"className="signup-link">Signup</Link>
+        </div>
         </div>
     );
 }

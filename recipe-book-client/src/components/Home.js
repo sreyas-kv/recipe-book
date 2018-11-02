@@ -7,7 +7,12 @@ import Header from './Header';
 import Recipes from './Recipes';
 import LandingPage from './landinPage';
 import SignupPage from './singup-page';
+import './home.css';
+
+
 import { refreshAuthToken } from '../actions/auth';
+import  CreateRecipes  from './CreateRecipies';
+import { SelectedRecipe } from './SelectedRecipe';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps){
@@ -42,10 +47,14 @@ export class App extends React.Component {
       <div className="App">
             <Header />
             {/* <Recipes /> */}
+            <Recipes {...this.props} />
+            {/* <SelectedRecipe /> */}
+{/*             
             <Route exact path="/" component={LandingPage} />
             <Route exact path='/signup' component={SignupPage} />
-            <Route exact path='/recipes' component={Recipes} />
-
+            <Route exact path='/recipes' component={Recipes} />  */}
+ <Route exact path="/SelectedRecipe/:id" component={SelectedRecipe} {...this.props}/> 
+      {/* <CreateRecipes /> */}
             {/* <SignupPage /> */}
       </div>
     );
