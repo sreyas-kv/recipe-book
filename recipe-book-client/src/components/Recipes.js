@@ -11,19 +11,10 @@ export class Recipes extends React.Component {
     this.props.dispatch(fetchRecipes());
   }
 
-
-  // handleClick(event) {
-  //   console.log(event.target.getAttribute('key'));
-  // }
-
-
   displayRecipe(recipe) {
     this.props.dispatch(displayRecipe(recipe));
-    console.log('Hello');
-    // this.props.history.push(`/SelectedRecipe`)
+    this.props.history.push(`/SelectedRecipe/${recipe.id}`,{recipe})                      
   }
-
-
   render() {
     const rec = this.props.recipes.recipes.map(recipes => {
       return recipes.ingeridents;
@@ -32,8 +23,6 @@ export class Recipes extends React.Component {
     const ingeridents = rec.map(value => {
       <li>{value}</li>
     })
-
-    // console.log('Recipe Props', this.props);
     // All Recipes Mapped 
     const allRecipes = this.props.recipes.recipes.map((recipe) => (
       <div key={recipe.id}>
@@ -45,7 +34,7 @@ export class Recipes extends React.Component {
         <button
           type="button"
           id={recipe.id}
-          onClick={this.displayRecipe}>{recipe.recipeName}
+          onClick={() =>this.displayRecipe(recipe)}>{recipe.recipeName}
           {/* onClick={() => this.props.dispatch(displayRecipe)}>{recipe.recipeName} */}
         </button>
         {/* onclick history push */}
@@ -56,6 +45,7 @@ export class Recipes extends React.Component {
     return (
       <div className="recipe-parent">
         {allRecipes}
+
       </div>
     );
   }
@@ -64,9 +54,16 @@ export class Recipes extends React.Component {
 Recipes.defaultProps = {
   title: 'This is default props for Recipes'
 }
-const mapsStateToProps = state => ({
-  recipes: state.recipes,
-  selected: state.recipes.recipes
+
+const mapStateToProps = state => ({
+  recipes: state.recipes
 });
 
-export default connect(mapsStateToProps)(Recipes);
+
+// function mapStateToProps(state) {
+//   console.log(state)
+//   const { recipes } = state;
+//   return { recipes };
+// }
+
+export default connect(mapStateToProps)(Recipes);

@@ -11,7 +11,7 @@ export class SelectedRecipe extends React.Component {
     // };
     
     render() {
-        console.log('Slected props: ',this.props)
+
         // const rec = this.props.recipes.recipes.map(recipes => {
         //     return recipes.ingeridents;
         // });
@@ -36,12 +36,9 @@ export class SelectedRecipe extends React.Component {
 
         // ));
 
-        // console.log('Selected Props: ',this.props)
+        console.log('Selected Props: ',this.props)
         // console.log(this.props.match.params.id)
         // console.log('Selected REcipe', this.props)
-        const selectedRec = this.props
-
-
 
 
         return (
@@ -55,9 +52,14 @@ export class SelectedRecipe extends React.Component {
 SelectedRecipe.defaultProps = {
     title: 'This is selected Recipe'
 }
-const mapsStateToProps = state => ({
+
+const mapStateToProps = state => ({
     recipes: state.recipes,
-    selected: state.recipes.recipes
+    selected: state.recipes
 });
 
-export default connect(mapsStateToProps)(SelectedRecipe);
+
+
+
+
+export default connect(mapStateToProps)(SelectedRecipe);

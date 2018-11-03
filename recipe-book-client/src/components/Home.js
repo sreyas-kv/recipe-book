@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
 
 import Header from './Header';
 // import SignupForm from './SignupForm';
@@ -11,23 +11,23 @@ import './home.css';
 
 
 import { refreshAuthToken } from '../actions/auth';
-import  CreateRecipes  from './CreateRecipies';
+import CreateRecipes from './CreateRecipies';
 import { SelectedRecipe } from './SelectedRecipe';
 
 export class App extends React.Component {
-  componentDidUpdate(prevProps){
-    if(!prevProps.loggedIn && this.props.loggedIn){
+  componentDidUpdate(prevProps) {
+    if (!prevProps.loggedIn && this.props.loggedIn) {
       this.startPeriodicRefresh();
-    } else if(prevProps.loggedIn && !this.props.loggedIn){
+    } else if (prevProps.loggedIn && !this.props.loggedIn) {
       this.stopPeriodicRefresh();
     }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.stopPeriodicRefresh();
   }
 
-  startPeriodicRefresh(){
+  startPeriodicRefresh() {
     this.refreshInterval = setInterval(
       () => this.props.dispatch(refreshAuthToken()),
       60 * 60 * 1000
@@ -35,27 +35,28 @@ export class App extends React.Component {
   }
 
   stopPeriodicRefresh() {
-    if(!this.refreshInterval) {
+    if (!this.refreshInterval) {
       return;
     }
     clearInterval(this.refreshInterval);
   }
-  
+
   render() {
 
     return (
       <div className="App">
-            <Header />
-            {/* <Recipes /> */}
-            <Recipes {...this.props} />
-            {/* <SelectedRecipe /> */}
-{/*             
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path='/signup' component={SignupPage} />
-            <Route exact path='/recipes' component={Recipes} />  */}
- <Route exact path="/SelectedRecipe/:id" component={SelectedRecipe} {...this.props}/> 
-      {/* <CreateRecipes /> */}
-            {/* <SignupPage /> */}
+        <Header />
+        {/* <Recipes /> */}
+        <Recipes {...this.props} />
+        {/* <SelectedRecipe /> */}
+
+        {/* <Route exact path="/" component={LandingPage} />
+        <Route exact path='/signup' component={SignupPage} />
+        <Route exact path='/recipes' component={Recipes} {...this.props}/> */}
+        {/* <Route exact path="/SelectedRecipe/:id" component={SelectedRecipe} {...this.props}/>  */}
+        <Route exact path="/SelectedRecipe/:id" component={SelectedRecipe} {...this.props} />
+        {/* <CreateRecipes /> */}
+        {/* <SignupPage /> */}
       </div>
     );
   }
@@ -66,4 +67,4 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
 });
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps)(App)); 
