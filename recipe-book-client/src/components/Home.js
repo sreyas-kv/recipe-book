@@ -47,13 +47,14 @@ export class App extends React.Component {
       <div className="App">
         <Header />
         {/* <Recipes /> */}
-        <Recipes {...this.props} />
+        {/* <Recipes {...this.props} /> */}
         {/* <SelectedRecipe /> */}
 
-        {/* <Route exact path="/" component={LandingPage} />
+        <Route exact path="/" component={LandingPage} />
         <Route exact path='/signup' component={SignupPage} />
-        <Route exact path='/recipes' component={Recipes} {...this.props}/> */}
-        {/* <Route exact path="/SelectedRecipe/:id" component={SelectedRecipe} {...this.props}/>  */}
+        <Route exact path='/recipes' component={Recipes} {...this.props}/>
+        <Route exact path='/createRecipe' component={CreateRecipes} />
+
         <Route exact path="/SelectedRecipe/:id" component={SelectedRecipe} {...this.props} />
         {/* <CreateRecipes /> */}
         {/* <SignupPage /> */}

@@ -13,7 +13,7 @@ export class Recipes extends React.Component {
 
   displayRecipe(recipe) {
     this.props.dispatch(displayRecipe(recipe));
-    this.props.history.push(`/SelectedRecipe/${recipe.id}`,{recipe})                      
+    this.props.history.push(`/SelectedRecipe/${recipe.id}`, { recipe })
   }
   render() {
     const rec = this.props.recipes.recipes.map(recipes => {
@@ -26,18 +26,16 @@ export class Recipes extends React.Component {
     // All Recipes Mapped 
     const allRecipes = this.props.recipes.recipes.map((recipe) => (
       <div key={recipe.id}>
-        {/* <button
-          type="button"
-          onClick={() => this.props.history.push(`/SelectedRecipe/${recipe.id}`)}>{recipe.recipeName}
-        </button> */}
+
+        {/* <p><a href="" className="-link" id={recipe.id} onClick={() => this.displayRecipe(recipe)}>{recipe.recipeName}</a></p> */}
 
         <button
           type="button"
+          className="recipes-list"
           id={recipe.id}
           onClick={() =>this.displayRecipe(recipe)}>{recipe.recipeName}
-          {/* onClick={() => this.props.dispatch(displayRecipe)}>{recipe.recipeName} */}
         </button>
-        {/* onclick history push */}
+
       </div>
     ))
 
@@ -45,7 +43,7 @@ export class Recipes extends React.Component {
     return (
       <div className="recipe-parent">
         {allRecipes}
-
+        <Link to="/CreateRecipe" className="createRecipe-link">Create Recipe</Link>
       </div>
     );
   }

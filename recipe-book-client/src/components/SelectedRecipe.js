@@ -7,43 +7,41 @@ import Recipes from './Recipes'
 export class SelectedRecipe extends React.Component {
     // componentWillMount() {
     //     this.props.dispatch(fetchSelectedRecipe(this.props.match.params.id))
-       
+
     // };
-    
+
+    returnBack() {
+        console.log(this.props)
+        // this.props.history.goBack();
+        
+    }
+
     render() {
-
-        // const rec = this.props.recipes.recipes.map(recipes => {
-        //     return recipes.ingeridents;
-        // });
-        // const ingeridents = rec.map(value => {
-        //     <li>{value}</li>
-        // })
-        // // All Recipes Mapped 
-        // const allRecipes = this.props.recipes.recipes.map((recipe, index) => (
-        //     <div key={index} id={recipe.id}>
-        //         <h2>{recipe.recipeName}</h2>
-        //         <p>Cooking Time: {recipe.cookingTime}</p>
-        //         <span><strong>Ingeridents</strong>:
-        // <ul>
-        //                 {recipe.ingeridents.map((bullet, index) => <li key={index}>{bullet}</li>)}
-        //             </ul></span>
-        //         <span><strong>Directions</strong>:
-        // <ul>
-        //                 {recipe.directions.map((bullet, index) => <li key={index}>{bullet}</li>)}
-        //             </ul></span>
-
-        //     </div>
-
-        // ));
-
-        console.log('Selected Props: ',this.props)
-        // console.log(this.props.match.params.id)
-        // console.log('Selected REcipe', this.props)
+        console.log('namet', this.props.location.state.recipe)
+        const recipeName = this.props.location.state.recipe.recipeName;
+        const cookingTime = this.props.location.state.recipe.cookingTime;
+        const ingeridents = this.props.location.state.recipe.ingeridents.map((ingerident, key) => (
+            <li key={key}>
+                {ingerident}
+            </li>
+        ));
+        const directions = this.props.location.state.recipe.directions.map((direction, index) => (
+                <li key={index}>
+                    {direction}
+                </li>
+        ))
+        // console.log('Selected Props: ', this.props.location.state.recipe.ingeridents)
 
 
         return (
             <div className="recipe-parent">
-                {/* {allRecipes} */}
+                <h2 className="recipename-h2"> {recipeName} </h2>
+                <span className="cookingtime-span">Cooking time: {cookingTime}</span>
+                <p><strong className="ingeridents-strong">Ingeridents: </strong></p>
+                <ol type="1"> {ingeridents}</ol>
+                <p><strong className="directions-strong">Directions:</strong></p>
+                <ol type="1">{directions}</ol>
+                <button type="button" onClick={() => this.props.history.goBack()}>Go Back</button>
             </div>
         );
     }
@@ -55,7 +53,6 @@ SelectedRecipe.defaultProps = {
 
 const mapStateToProps = state => ({
     recipes: state.recipes,
-    selected: state.recipes
 });
 
 

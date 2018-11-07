@@ -19,6 +19,14 @@ export class CreateRecipes extends React.Component {
         .dipatch(createRecipe(createMethod))
     }
 
+    addIngeridents(){
+    //     this.props.counter ++;
+    //     {this.props.map(input => <FormInput key={input} />)}
+    // console.log('Testing');
+    this.props.inputs.push(<Field type="text" />)
+    console.log('Values:',this.props.inputs)
+    }
+
     render(){
         return(
             <form  
@@ -28,21 +36,31 @@ export class CreateRecipes extends React.Component {
             )}>
             {/* <label htmlFor="recipeName">Recipe Name</label> */}
             <Field component={Input} type="text" name="recipeName" className="recipeName" placeholder="Recipe Name" label="Recipe Name " validate={[required, nonEmpty]} /><br/>
-            <label htmlFor="cookingTime">cooking Time</label>
-            <Field component={Input} type="text" name="cookingTime" id="cookingTime" placeholder="Coocking Time" validate={[required, nonEmpty]} />
-            <label htmlFor="ingeridents">Ingeridents</label>
-            <Field component={Input} type="text" name="ingeridents" id="ingeridents" placeholder="Ingeridents" validate={[required, nonEmpty]} />
-            <label htmlFor="direction">Directions</label>
-            <Field component={Input} type="text" name="directions" id="directions" validate={[required, nonEmpty]} />
+            {/* <label htmlFor="cookingTime">cooking Time</label> */}
+            <Field component={Input} type="text" name="cookingTime" id="cookingTime" placeholder="Coocking Time" label="cooking Time" validate={[required, nonEmpty]} />
+            {/* <label htmlFor="ingeridents">Ingeridents</label> */}
+            <div className="ingeridents-div">
+            {/* <Field component={Input} type="text" name="ingeridents" id="ingeridents" placeholder="Ingeridents" label="Ingeridents" validate={[required, nonEmpty]} /> */}
+            {this.props.inputs.map((input) => <Field type="text" key={input} />)}
+            <button 
+            type="button" onClick={() => this.addIngeridents()}>+</button>
+            </div>
+            {/* <label htmlFor="direction">Directions</label> */}
+            <Field component={Input} type="text" name="directions" id="directions" label="Directions" validate={[required, nonEmpty]} />
             <button 
             type="submit"
             disabled={this.props.pristine || this.props.submitting}>Create Recipe</button>
+            <h1>{console.log('Counter',this.props.counter)}</h1>
             </form>
+           
+            
         )
     }
 }
 
 export default reduxForm({
+    counter: 1,
+    inputs: [ <Field component={Input} type="text" name="ingeridents" id="ingeridents" placeholder="Ingeridents" label="Ingeridents" validate={[required, nonEmpty]} />],
     form: 'createRecipe',
     onSubmitFail: (error, dispatch) => {if(error){dispatch(focus('createRecipe', Object.keys(error)[0]))}}
 })(CreateRecipes);
