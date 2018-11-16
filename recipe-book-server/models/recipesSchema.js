@@ -11,6 +11,7 @@ const recipeSchema = mongoose.Schema({
 
 recipeSchema.methods.serialize = function() {
     return {
+        id: this._id,
         recipeName: this.recipeName || '',
         ingeridents: this.ingeridents || '',
         cookingTime: this.cookingTime || '',

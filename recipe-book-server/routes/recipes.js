@@ -14,7 +14,16 @@ router.get('/', (req, res) => {
     })
 });
 
+router.get('/:id', (req, res) => {
+    Recipe.findById(req.params.id)
+    .then(recipe => {
+        res.json(recipe.serialize());
+    })
+});
+
+
 router.post('/', (req, res) => {
+    console.log('Testing');
     Recipe
     .create({
         recipeName: req.body.recipeName,
@@ -28,7 +37,7 @@ router.post('/', (req, res) => {
       res.status(500).json({ error: 'Something went wrong' });
     });
 
-    // res.json(req.body);
+    res.json(req.body);
 
 });
 
