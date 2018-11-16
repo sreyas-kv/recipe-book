@@ -27,7 +27,7 @@ export class Login extends React.Component {
           <Field component={Input} type="email" name="username" placeholder="Email" className="user-email" validate={[required, nonEmpty]} />
           {/* <label htmlFor="password">Password</label> */}
           <Field component={Input} type="password" name="password" id="password" validate={[required, nonEmpty]} />
-          <button disabled={this.props.pristine || this.props.submitting}>Login</button>
+          <button className="login-button" disabled={this.props.pristine || this.props.submitting}>Login</button>
         </form>
       </div>
     );

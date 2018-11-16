@@ -1,26 +1,24 @@
 import * as actions from '../actions/recipes';
 
 const initialState = {
-    recipes: []
+    recipes: [],
+    textInput: [{ingredient: ''}]
 };
 
 export const recipesReducer = (state = initialState, action) => {
     if(action.type === actions.FETCH_RECIPES_SUCCESS){
         return action.recipes;
     } else if(action.type === actions.DISPLAY_RECIPE){
-        // console.log('Reducer', state.recipes)
-        // return Object.assign({}, state, {
-        //     selected: [...state.recipes,{
-        //         title: action.recipeName
-        //     }
-        //     ]})
-
         return Object.assign({}, state, {
             selected: [...state.recipes,{
                 recipes: action.recipes
             }]
         })
 
+    } else if( action.type === actions.ADD_INGREDIENTS){
+        return Object.assign({}, state, {
+            textInput: [...state.textInput].concat([{ingredient: ''}])
+        })
     }
     else{
         return state;

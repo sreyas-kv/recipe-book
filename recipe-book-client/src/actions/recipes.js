@@ -57,6 +57,14 @@ export const displayRecipe = recipes => ({
     recipes
 });
 
+export const ADD_INGREDIENTS = 'ADD_INGREDIENTS';
+export const addIngredients = ingredient => ({
+    type: ADD_INGREDIENTS
+});
+
+
+
+
 
 
 //Create new recipe
