@@ -5,33 +5,21 @@ import { fetchSelectedRecipe } from '../actions/recipes';
 import Recipes from './Recipes'
 
 export class SelectedRecipe extends React.Component {
-    // componentWillMount() {
-    //     this.props.dispatch(fetchSelectedRecipe(this.props.match.params.id))
 
-    // };
-
-    returnBack() {
-        console.log(this.props)
-        // this.props.history.goBack();
-        
-    }
 
     render() {
-        console.log('namet', this.props.location.state.recipe)
         const recipeName = this.props.location.state.recipe.recipeName;
         const cookingTime = this.props.location.state.recipe.cookingTime;
         const ingeridents = this.props.location.state.recipe.ingeridents.map((ingerident, key) => (
-            <li key={key}>
+            <p key={key}>
                 {ingerident}
-            </li>
+            </p>
         ));
         const directions = this.props.location.state.recipe.directions.map((direction, index) => (
-                <li key={index}>
-                    {direction}
-                </li>
+            <li key={index}>
+                {direction}
+            </li>
         ))
-        // console.log('Selected Props: ', this.props.location.state.recipe.ingeridents)
-
 
         return (
             <div className="recipe-parent">
@@ -52,11 +40,7 @@ SelectedRecipe.defaultProps = {
 }
 
 const mapStateToProps = state => ({
-    recipes: state.recipes,
+    recipes: state.recipes
 });
-
-
-
-
 
 export default connect(mapStateToProps)(SelectedRecipe);

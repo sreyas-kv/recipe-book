@@ -11,8 +11,8 @@ export function LandingPage(props){
     }
     return(
         <div className="landing-page">
-        <h2 className="welcome-note">Welcome to Recipe Book</h2>
-        <h4 className="login-request">Please Login to continue</h4>
+        <h2 className="welcome-note">be your own masterchef</h2>
+        {/* <h4 className="login-request">a world of recipes awaits</h4> */}
         <Login />
         <div className="link-div">
         <Link to="/signup"className="signup-link">Signup</Link>

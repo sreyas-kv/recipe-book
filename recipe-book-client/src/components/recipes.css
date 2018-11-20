@@ -1,0 +1,23 @@
+.recipe-item{
+margin-left: 25%;
+}
+
+.recipes-list{
+    font-family: 'Mali', cursive;
+    border: #160A47;
+    border-radius: 12px;
+    font-size: 20px;
+    background-color: #ffd64d;
+    color: #f52549;
+    width: 60%;
+    height: 70px;
+    margin:5px;
+
+}
+
+.recipes-list:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color:#9bc01c;
+    color: yellow;
+    /* #fa6775; */
+}

@@ -3,48 +3,89 @@ import { Field, FieldArray, reduxForm, focus } from 'redux-form';
 import { createRecipe } from '../actions/createRecipes';
 import Input from './Input';
 import { connect } from 'react-redux';
-import { addIngredients } from '../actions/recipes'
+import { addIngredients } from '../actions/recipes';
+
 
 // import createRecipe from '../actions/createRecipes';
 
 import { required, nonEmpty, matches, length, isTrimmed } from './validator';
 
 export class CreateRecipes extends React.Component {
+
     onSubmit(values) {
         const { recipeName, ingeridents, cookingTime, directions } = values;
-        console.log(values);
+        // console.log('Values',values);
         const createMethod = { recipeName, ingeridents, cookingTime, directions };
-        console.log(createMethod);
-        return this.props
-            .dipatch(createRecipe(createMethod))
+        this.props.dipatch(createRecipe(createMethod))
+        this.props.history.push('/recipes');
     }
 
     render() {
-        const renderMembers = ({ fields, meta: { touched, error } }) => (
+
+        const renderField = ({ input, label, type, meta: { touched, error } }) =>
             <div>
-                <button type="button" onClick={() => fields.push({})}>Add ingerident</button>
-                {touched && error && <span>{error}</span>}
-                {fields.map((member, index) =>
+                <label>
+                    {label}
+                </label>
+                <div>
+                    <input {...input} type={type} placeholder={label} />
+                    {touched &&
+                        error &&
+                        <span>
+                            {error}
+                        </span>}
+                </div>
+            </div>
+        const renderIngerident = ({ fields, meta: { error } }) =>
+            <div>
+                <button type="button" onClick={() => fields.push()}>Add Ingeridents</button>
+                {fields.map((ingerident, index) =>
                     <li key={index}>
                         <button
                             type="button"
                             title="Remove ingerident"
-                            onClick={() => fields.remove(index)}>Remove ingerident</button>
-                        <h4>Ingerident #{index + 1}</h4>
+                            onClick={() => fields.remove(index)}>Remove Ingerident</button>
                         <Field
-                            component={Input}
-                            name={`${member}`}
-                            // name="ingeridents"
+                            name={ingerident}
                             type="text"
-                            label="ingeridents"
-                             />
-
+                            component={renderField}
+                            label={`Ingerident ${index + 1}`}
+                        />
                     </li>
                 )}
+                {error &&
+                    <li className="error">
+                        {error}
+                    </li>}
             </div>
-        )
+
+        const renderDirections = ({ fields, meta: { error } }) =>
+            <div>
+                <button type="button" onClick={() => fields.push()}>Add Directions</button>
+                {fields.map((direction, index) =>
+                    <li key={index}>
+                        <button
+                            type="button"
+                            title="Remove direction"
+                            onClick={() => fields.remove(index)}>Remove Direction</button>
+                        <Field
+                            name={direction}
+                            type="text"
+                            component={renderField}
+                            label={`Step ${index + 1}`}
+                        />
+                    </li>
+                )}
+                {error &&
+                    <li className="error">
+                        {error}
+                    </li>}
+            </div>
+
+
 
         return (
+            <div class="form-div">
             <form
                 className="createRecipe-form"
                 onSubmit={this.props.handleSubmit(values =>
@@ -54,20 +95,19 @@ export class CreateRecipes extends React.Component {
                 <Field component={Input} type="text" name="recipeName" className="recipeName" placeholder="Recipe Name" label="Recipe Name " validate={[required, nonEmpty]} /><br />
                 {/* <label htmlFor="cookingTime">cooking Time</label> */}
                 <Field component={Input} type="text" name="cookingTime" id="cookingTime" placeholder="Coocking Time" label="cooking Time" validate={[required, nonEmpty]} />
-                {/* <label htmlFor="ingeridents">Ingeridents</label> */}
                 <div className="ingeridents-div">
                     {/* <Field component={Input} type="text" name="ingeridents" id="ingeridents" placeholder="Ingeridents" label="Ingeridents" validate={[required, nonEmpty]} /> */}
-                    <FieldArray name="ingeridents" component={renderMembers} />
-                    {/* <button 
-            type="button" onClick={() => this.addIngeridents()}>+</button> */}
+                    <FieldArray name="ingeridents" component={renderIngerident} />
+
+                    {/* <Field component={Input} type="text" name="directions" id="directions" label="Directions" validate={[required, nonEmpty]} /> */}
+                    <FieldArray name="directions" component={renderDirections} />
                 </div>
-                {/* <label htmlFor="direction">Directions</label> */}
-                <Field component={Input} type="text" name="directions" id="directions" label="Directions" validate={[required, nonEmpty]} />
                 <button
                     type="submit"
                     disabled={this.props.pristine || this.props.submitting}>Create Recipe</button>
             </form>
-
+            <button type="button" onClick={() => this.props.history.goBack()}>Go Back</button>
+            </div>
         )
     }
 }
