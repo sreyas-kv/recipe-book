@@ -12,22 +12,6 @@ router.get('/', (req, res) => {
     res.send('Hello world from Signup');
 });
 
-// router.post('/',(req, res) => {
-//     console.log(req.body);
-//     User
-//     .create({
-//         firstName: req.body.firstName,
-//         lastName: req.body.lastName,
-//         username: req.body.username,
-//         password: req.body.password
-//     })
-//     .then(user => res.status(201).json(user.serialize()))
-//     .catch(err => {
-//       console.error(err);
-//       res.status(500).json({ error: 'Something went wrong' });
-//     });
-// });
-
 //Signup new user
 router.post('/', jsonParser, (req, res) => {
     // console.log('req body',req.body);
