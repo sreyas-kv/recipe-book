@@ -10,9 +10,9 @@ export function SignupPage(props){
     }
     return (
         <div className="home">
-        <h2>Signup for Recipe Book account</h2>
+        <h2>sign up here</h2>
         <SignupForm />
-        <Link to="/">Login</Link>
+        <Link to="/">login</Link>
         </div>
     );
 }

@@ -1,5 +1,17 @@
 .recipe-book-header, .createRecipe-link{
 font-family: 'Pacifico', cursive;
-color: #f52549;
+color: #C3073F;
+}
 
+.recipe-book-header{
+    width: 13%;
+    padding-left: 22px;
+    border: solid #6F2232 3px;
+    margin-left: 45%;
+    margin-right: 30%;
+    font-size: 60px;
+
+    border-radius: 50%;
+    /* width: 300px;
+    height: 300px; */
 }

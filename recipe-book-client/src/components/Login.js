@@ -14,8 +14,8 @@ export class Login extends React.Component {
     let error;
     if (this.props.error) {
       error = (
-        <div className="form-error" aria-live="polite">
-          {this.props.error}</div>
+        <span className="form-error" aria-live="polite">
+          {this.props.error}</span>
       );
     }
 
@@ -25,11 +25,11 @@ export class Login extends React.Component {
         {error}
         <div className="inner-div">
         <div className="username-div">
-          {/* <label htmlFor="login-email" className="username-lable"><span className="login-span">e-mail</span></label> */}
-          <Field id="username" component={Input} type="text" name="username" className="user-textbox" validate={[required, nonEmpty]} label="email"/>
-          {/* <label htmlFor="password">Password</label> */}
+          {/* <label htmlFor="username" className="username-lable"><span className="login-span">email</span></label> */}
+          <Field id="username" component={Input} type="text" name="username" className="user-textbox" validate={[required, nonEmpty]} label="email" />
+          {/* <label htmlFor="password" className="password-lable"><span className="password-span">password</span></label> */}
+          <Field component={Input} type="password" name="password" className="password-field" id="password" validate={[required, nonEmpty]} label="password"/>
           </div>
-          <Field component={Input} type="password" name="password" id="password" validate={[required, nonEmpty]} label="password"/>
           <button className="login-button" disabled={this.props.pristine || this.props.submitting}>login</button>
           </div>
         </form>

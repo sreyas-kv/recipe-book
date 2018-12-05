@@ -4,6 +4,7 @@ import { createRecipe } from '../actions/createRecipes';
 import Input from './Input';
 import { connect } from 'react-redux';
 import { addIngredients } from '../actions/recipes';
+import './createRecipe.css';
 
 
 // import createRecipe from '../actions/createRecipes';
@@ -21,37 +22,37 @@ export class CreateRecipes extends React.Component {
     }
 
     render() {
-
         const renderField = ({ input, label, type, meta: { touched, error } }) =>
-            <div>
-                <label>
+            <span className="addIngerident-span">
+                {/* <label className="ingerident-label">
                     {label}
-                </label>
-                <div>
-                    <input {...input} type={type} placeholder={label} />
-                    {touched &&
-                        error &&
-                        <span>
-                            {error}
-                        </span>}
-                </div>
-            </div>
+                </label> */}
+                {/* <div> */}
+                <input {...input} type={type} placeholder={label} className="ingerident-input" />
+                {touched &&
+                    error &&
+                    <span>
+                        {error}
+                    </span>}
+                {/* </div> */}
+            </span>
         const renderIngerident = ({ fields, meta: { error } }) =>
-            <div>
-                <button type="button" onClick={() => fields.push()}>Add Ingeridents</button>
+            <div className="addIngredients-div">
+                <button className="add-ingredients" type="button" onClick={() => fields.push()}>add ingeridents</button>
                 {fields.map((ingerident, index) =>
-                    <li key={index}>
-                        <button
-                            type="button"
-                            title="Remove ingerident"
-                            onClick={() => fields.remove(index)}>Remove Ingerident</button>
+                    <div className="addOption-div" key={index}>
                         <Field
                             name={ingerident}
                             type="text"
                             component={renderField}
                             label={`Ingerident ${index + 1}`}
                         />
-                    </li>
+                        <button
+                            type="button"
+                            className="remove-ingredient"
+                            title="Remove ingerident"
+                            onClick={() => fields.remove(index)}>remove ingredient</button>
+                    </div>
                 )}
                 {error &&
                     <li className="error">
@@ -60,21 +61,22 @@ export class CreateRecipes extends React.Component {
             </div>
 
         const renderDirections = ({ fields, meta: { error } }) =>
-            <div>
-                <button type="button" onClick={() => fields.push()}>Add Directions</button>
+            <div className="addInstructions-div">
+                <button className="add-instructions" type="button" onClick={() => fields.push()}>add instructions</button>
                 {fields.map((direction, index) =>
-                    <li key={index}>
-                        <button
-                            type="button"
-                            title="Remove direction"
-                            onClick={() => fields.remove(index)}>Remove Direction</button>
+                    <div className="directions-div" key={index}>
                         <Field
                             name={direction}
                             type="text"
                             component={renderField}
                             label={`Step ${index + 1}`}
                         />
-                    </li>
+                        <button
+                            type="button"
+                            className="remove-instruction"
+                            title="Remove instruction"
+                            onClick={() => fields.remove(index)}>remove instruction</button>
+                    </div>
                 )}
                 {error &&
                     <li className="error">
@@ -86,27 +88,24 @@ export class CreateRecipes extends React.Component {
 
         return (
             <div class="form-div">
-            <form
-                className="createRecipe-form"
-                onSubmit={this.props.handleSubmit(values =>
-                    this.onSubmit(values)
-                )}>
-                {/* <label htmlFor="recipeName">Recipe Name</label> */}
-                <Field component={Input} type="text" name="recipeName" className="recipeName" placeholder="Recipe Name" label="Recipe Name " validate={[required, nonEmpty]} /><br />
-                {/* <label htmlFor="cookingTime">cooking Time</label> */}
-                <Field component={Input} type="text" name="cookingTime" id="cookingTime" placeholder="Coocking Time" label="cooking Time" validate={[required, nonEmpty]} />
-                <div className="ingeridents-div">
-                    {/* <Field component={Input} type="text" name="ingeridents" id="ingeridents" placeholder="Ingeridents" label="Ingeridents" validate={[required, nonEmpty]} /> */}
+                <form
+                    className="createRecipe-form"
+                    onSubmit={this.props.handleSubmit(values =>
+                        this.onSubmit(values)
+                    )}>
+                    <Field className="recipename" component={Input} type="text" name="recipeName" placeholder="Enter recipe name" validate={[required, nonEmpty]} />
+                    <Field className="cookingtime" component={Input} type="text" name="cookingTime" id="cookingTime" placeholder="Coocking time" validate={[required, nonEmpty]} />
+                    {/* <div className="ingeridents-div"> */}
                     <FieldArray name="ingeridents" component={renderIngerident} />
-
-                    {/* <Field component={Input} type="text" name="directions" id="directions" label="Directions" validate={[required, nonEmpty]} /> */}
                     <FieldArray name="directions" component={renderDirections} />
-                </div>
-                <button
-                    type="submit"
-                    disabled={this.props.pristine || this.props.submitting}>Create Recipe</button>
-            </form>
-            <button type="button" onClick={() => this.props.history.goBack()}>Go Back</button>
+                    {/* </div> */}
+                    <button
+                        type="submit"
+                        className="done"
+                        disabled={this.props.pristine || this.props.submitting}>done</button>
+                    <button className="back" type="button" onClick={() => this.props.history.goBack()}>go back</button>
+                </form>
+
             </div>
         )
     }

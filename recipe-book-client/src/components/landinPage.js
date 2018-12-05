@@ -12,10 +12,11 @@ export function LandingPage(props){
     return(
         <div className="landing-page">
         <h2 className="welcome-note">be your own masterchef</h2>
-        {/* <h4 className="login-request">a world of recipes awaits</h4> */}
+       <div className="login-screen">
         <Login />
         <div className="link-div">
         <Link to="/signup"className="signup-link">Signup</Link>
+        </div>
         </div>
         </div>
     );

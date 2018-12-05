@@ -1,34 +1,52 @@
 .welcome-note,.login-request{
     font-family: 'Mali', cursive;
-    color: white;
+    color: #f52549;
     text-align: center;
     font-size: 24px;
 }
 
 .landing-page{
-    /* border: white 3px solid; */
+    border: #f52549 1px solid;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
+    width: 700px;
     height: 400px;
+    border-radius: 12px;
     background: linear-gradient(
-		rgba(0,0,0,0.6),
-		rgba(0,0,0,0.6)
+		rgba(0,0,0,0.3),
+		rgba(0,0,0,0.3)
 		);
 }
 
 .link-div{
-    text-align: center;
-    text-decoration: none;
+    /* text-decoration: none;
     margin-top: 20px;
     margin-left: 80px;
     /* margin-top: 40px; */
-    border: 3px solid;
+    /* border: 1px solid;
     width: 230px;
     height: 40px;
-    background-color: white;
+    border-radius: 12px;
+    background-color: red; */
+
+    font-family: 'Mali', cursive;
+    text-align: center;
+    border: #160A47;
+    border-radius: 12px;
+    font-size: 10px;
+    background-color: #e4ea8c;
+    color: #3f6c45;
+    width: 20%;
+    height: 20px;
+    margin:5px;
 }
 
+.login-screen{
+border: solid 3px yellow;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 10%;
+}
 .signup-link:link{
 text-decoration: none;
 }

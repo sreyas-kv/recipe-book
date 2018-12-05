@@ -35,14 +35,15 @@ export class Recipes extends React.Component {
       </div>
     ))
 
-
     return (
       <div className="recipe-parent">
-      <div className="recipe-item">
-        {allRecipes}
-        </div>
-        <div className="create-link">
+      <div className="create-link-parent">
+      <div className="inside-add">
         <Link to="/CreateRecipe" className="createRecipe-link">add new recipe now</Link>
+        </div>
+        </div>
+        <div className="recipes-container">
+        {allRecipes}
         </div>
       </div>
     );
