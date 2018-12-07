@@ -25,11 +25,7 @@ export default class Input extends React.Component {
         return ( 
           
             <span className="form-input">
-                <label className="label-input" htmlFor={this.props.input.name}>
-                    {/* <div className="error-message"> */}
-                   {/* <span className="error-span">{this.props.label}{error}{warning}</span> */}
-                   {error}
-                </label>
+                
                 <input className={this.props.className}
                     {...this.props.input}
                     id={this.props.input.name}
@@ -37,6 +33,11 @@ export default class Input extends React.Component {
                     ref={input => (this.input = input)}
                     placeholder={this.props.placeholder}
                 />
+                <label className="label-input" htmlFor={this.props.input.name}>
+                    {/* <div className="error-message"> */}
+                   {/* <span className="error-span">{this.props.label}{error}{warning}</span> */}
+                   {error}
+                </label>
               
             </span>
         );

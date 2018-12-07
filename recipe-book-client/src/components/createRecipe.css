@@ -1,14 +1,11 @@
-.form-div{
+.form-div {
     font-family: 'Righteous', cursive;
     border: #950740 solid 1px;
     width: 45%;
     margin-left: 30%;
     margin-right: 30%;
     border-radius: 8px;
-    background: linear-gradient(
-		rgba(0,0,0,0.6),
-		rgba(0,0,0,0.3)
-		);
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
 }
 
 .cookingtime, .recipename {
@@ -16,15 +13,16 @@
     box-sizing: border-box;
 }
 
-input{
+.cookingtime, .recipename {
     background-color: white;
 }
 
-input:hover{
+.cookingtime:hover, .recipename:hover, .ingerident-input:hover {
     background-color: rgba(248, 248, 248, 0.788);
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
-.recipename{
+
+.recipename {
     font-family: 'Cairo', sans-serif;
     /* margin-left: 80px; */
     margin: 15px 0 0 10px;
@@ -36,7 +34,7 @@ input:hover{
     font-size: 18px;
 }
 
-.cookingtime{
+.cookingtime {
     font-family: 'Cairo', sans-serif;
     margin-left: 20px;
     margin-top: 15px;
@@ -47,15 +45,15 @@ input:hover{
     font-size: 18px;
 }
 
-.add-ingredients, .add-instructions{
+.add-ingredients, .add-instructions {
     font-family: 'Cairo', sans-serif;
     text-align: center;
     border-radius: 6px;
     font-size: 15px;
     background-color: #86C232;
     border: 1px solid #61892F;
-    color:  #474B4F;
-    margin:10px 10px 10px 10px;
+    color: #474B4F;
+    margin: 10px 10px 10px 10px;
 }
 
 .add-ingredients:active, .add-instructions:active {
@@ -63,16 +61,16 @@ input:hover{
     box-shadow: 0 5px #AAAAAA;
     border: 2px solid #61892F;
     transform: translateY(4px);
-  }
-
-.add-ingredients:hover, .add-instructions:hover{
-    background-color:#61892F;
-    color: #fff;
-    border: 1px solid #86C232;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.remove-ingredient, .remove-instruction{
+.add-ingredients:hover, .add-instructions:hover {
+    background-color: #61892F;
+    color: #fff;
+    border: 1px solid #86C232;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.remove-ingredient, .remove-instruction {
     font-family: 'Cairo', sans-serif;
     text-align: center;
     /* border: #160A47; */
@@ -80,18 +78,18 @@ input:hover{
     font-size: 15px;
     background-color: #E7717D;
     border: 1px solid #950740;
-    color:  #6F2232;
-    margin:10px;
+    color: #6F2232;
+    margin: 10px;
 }
 
-.remove-ingredient:hover, .remove-instruction:hover{
-background-color:#6F2232;
+.remove-ingredient:hover, .remove-instruction:hover {
+    background-color: #6F2232;
     color: #E7717D;
     border: 1px solid #C3073F;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
-.done, .back{
+.done, .back {
     font-family: 'Cairo', sans-serif;
     text-align: center;
     border: #160A47 solid 1px;
@@ -102,31 +100,33 @@ background-color:#6F2232;
     color: #160A47;
     width: 15%;
     height: 30px;
-    margin:5px;
+    margin: 5px;
 }
 
-.done:hover, .back:hover{
-    background-color:#05386B;
+.done:hover, .back:hover {
+    background-color: #05386B;
     color: #8EE4AF;
     border: 1px solid #8EE4AF;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
-.done{
+
+.done {
     margin-left: 30%;
 }
 
-.back{
+.back {
     margin-left: 20px;
     position: relative;
 }
-.form-error{
+
+.form-error {
     font-family: 'Cairo', sans-serif;
     font-size: 15px;
     margin: 5px;
-    color:#E7717D;
+    color: #E7717D;
 }
 
-.ingerident-input{
+.ingerident-input {
     font-family: 'Cairo', sans-serif;
     width: 40%;
     border-radius: 10px;

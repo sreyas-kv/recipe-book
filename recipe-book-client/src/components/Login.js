@@ -9,10 +9,17 @@ export class Login extends React.Component {
   onSubmit(values) {
     return this.props.dispatch(login(values.username, values.password));
   }
-
   render() {
     let error;
-    if (this.props.error) {
+    let invalidLoginError;
+    if (this.props.error === 'Incorrect username or password') {
+      invalidLoginError = (
+        <span className="incorrect-login" aria-live="polite">
+          {this.props.error}</span>
+      );
+      console.log('Sreyas ', this.props.error)
+    }
+    else if (this.props) {
       error = (
         <span className="form-error" aria-live="polite">
           {this.props.error}</span>
@@ -22,16 +29,26 @@ export class Login extends React.Component {
     return (
       <div className="login-parent">
         <form className="login-form" onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        {error}
-        <div className="inner-div">
-        <div className="username-div">
-          {/* <label htmlFor="username" className="username-lable"><span className="login-span">email</span></label> */}
-          <Field id="username" component={Input} type="text" name="username" className="user-textbox" validate={[required, nonEmpty]} label="email" />
-          {/* <label htmlFor="password" className="password-lable"><span className="password-span">password</span></label> */}
-          <Field component={Input} type="password" name="password" className="password-field" id="password" validate={[required, nonEmpty]} label="password"/>
-          </div>
+          <Field
+            id="username"
+            component={Input}
+            type="text"
+            name="username"
+            className="user-textbox"
+            validate={[required, nonEmpty]}
+            placeholder="Enter email"
+          /> <br />
+          <Field component={Input}
+            type="password"
+            name="password"
+            className="password-field"
+            id="password"
+            validate={[required, nonEmpty]}
+            placeholder="Enter password"
+          />  {error}<br />
+          <br />
+          {invalidLoginError}<br />
           <button className="login-button" disabled={this.props.pristine || this.props.submitting}>login</button>
-          </div>
         </form>
       </div>
     );
@@ -41,4 +58,5 @@ export class Login extends React.Component {
 export default reduxForm({
   form: 'login',
   onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
+  // onSubmitFail: (error, dispatch) => { if (error) { dispatch(focus('createRecipe', Object.keys(error)[0])) } }
 })(Login);

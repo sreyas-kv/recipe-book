@@ -84,8 +84,6 @@ export class CreateRecipes extends React.Component {
                     </li>}
             </div>
 
-
-
         return (
             <div class="form-div">
                 <form
