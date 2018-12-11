@@ -96,7 +96,6 @@
     border-radius: 6px;
     font-size: 15px;
     background-color: #8EE4AF;
-    /* color: #ed8c72; */
     color: #160A47;
     width: 15%;
     height: 30px;
@@ -112,6 +111,12 @@
 
 .done {
     margin-left: 30%;
+}
+.done:disabled{
+    background-color: #6F7DAf;
+    color: #153100;
+    border: none;
+    box-shadow: none;
 }
 
 .back {

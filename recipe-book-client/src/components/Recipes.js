@@ -1,10 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
-
 import { fetchRecipes, displayRecipe } from '../actions/recipes';
-import { Link, Redirect } from 'react-router-dom';
-import SelectedRecipe from './SelectedRecipe';
+import { Link } from 'react-router-dom';
 
 import './recipes.css';
 

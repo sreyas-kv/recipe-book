@@ -1,41 +1,39 @@
 import React from 'react';
-import { Field, FieldArray, reduxForm, focus } from 'redux-form';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 import { createRecipe } from '../actions/createRecipes';
 import Input from './Input';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addIngredients } from '../actions/recipes';
 import './createRecipe.css';
 
-
-// import createRecipe from '../actions/createRecipes';
-
-import { required, nonEmpty, matches, length, isTrimmed } from './validator';
+import { required, nonEmpty } from './validator';
 
 export class CreateRecipes extends React.Component {
 
     onSubmit(values) {
+        // values.preventDefault();
         const { recipeName, ingeridents, cookingTime, directions } = values;
-        // console.log('Values',values);
         const createMethod = { recipeName, ingeridents, cookingTime, directions };
-        this.props.dipatch(createRecipe(createMethod))
+        // this.props.dipatch(createRecipe(createMethod));
+        console.log('createMethod: ', createMethod);
+        this.props.createRecipe(createMethod);
         this.props.history.push('/recipes');
     }
+    // backToRecipes = () => {
+    //     <Redirect to='/Recipes' />
+    // }
 
     render() {
         const renderField = ({ input, label, type, meta: { touched, error } }) =>
             <span className="addIngerident-span">
-                {/* <label className="ingerident-label">
-                    {label}
-                </label> */}
-                {/* <div> */}
                 <input {...input} type={type} placeholder={label} className="ingerident-input" />
                 {touched &&
                     error &&
                     <span>
                         {error}
                     </span>}
-                {/* </div> */}
             </span>
+
         const renderIngerident = ({ fields, meta: { error } }) =>
             <div className="addIngredients-div">
                 <button className="add-ingredients" type="button" onClick={() => fields.push()}>add ingeridents</button>
@@ -85,22 +83,25 @@ export class CreateRecipes extends React.Component {
             </div>
 
         return (
-            <div class="form-div">
+            <div className="form-div">
                 <form
                     className="createRecipe-form"
-                    onSubmit={this.props.handleSubmit(values =>
-                        this.onSubmit(values)
-                    )}>
+                    onSubmit={
+                    this.props.handleSubmit(values => {
+                             this.onSubmit(values);
+                         })}>
                     <Field className="recipename" component={Input} type="text" name="recipeName" placeholder="Enter recipe name" validate={[required, nonEmpty]} />
                     <Field className="cookingtime" component={Input} type="text" name="cookingTime" id="cookingTime" placeholder="Coocking time" validate={[required, nonEmpty]} />
-                    {/* <div className="ingeridents-div"> */}
                     <FieldArray name="ingeridents" component={renderIngerident} />
                     <FieldArray name="directions" component={renderDirections} />
-                    {/* </div> */}
                     <button
                         type="submit"
                         className="done"
-                        disabled={this.props.pristine || this.props.submitting}>done</button>
+                        disabled={this.props.pristine || this.props.submitting}
+                    // onClick={() => this.props.history.push('/recipes')}
+                    // onClick={() => this.backToRecipes()}
+                    > done </button>
+
                     <button className="back" type="button" onClick={() => this.props.history.goBack()}>go back</button>
                 </form>
 
@@ -109,7 +110,21 @@ export class CreateRecipes extends React.Component {
     }
 }
 
+// export default reduxForm({
+//     form: 'createRecipe',
+//     onSubmitFail: (error, dispatch) => { if (error) { dispatch(focus('createRecipe', Object.keys(error)[0])) } }
+// })(CreateRecipes);
+
+
+CreateRecipes.propTypes = {
+    createRecipe: PropTypes.func.isRequired
+};
+
+// export default connect(null, { createRecipe })(CreateRecipes);
+
+CreateRecipes = connect(
+    null, { createRecipe })(CreateRecipes);
+
 export default reduxForm({
-    form: 'createRecipe',
-    onSubmitFail: (error, dispatch) => { if (error) { dispatch(focus('createRecipe', Object.keys(error)[0])) } }
-})(CreateRecipes);
+        form: 'createRecipe'
+    })(CreateRecipes);

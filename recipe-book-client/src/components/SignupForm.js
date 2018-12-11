@@ -34,8 +34,8 @@ export class SignupForm extends React.Component {
                     type="text"
                     className="lastName"
                     name="lastName"
-                    placeholder="Last name" 
-                    /> <br />
+                    placeholder="Last name"
+                /> <br />
                 <Field
                     component={Input}
                     type="text"

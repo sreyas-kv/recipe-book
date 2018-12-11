@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { fetchSelectedRecipe } from '../actions/recipes';
 import Recipes from './Recipes'
+import './selectedRecipe.css';
 
 export class SelectedRecipe extends React.Component {
 
@@ -11,9 +12,9 @@ export class SelectedRecipe extends React.Component {
         const recipeName = this.props.location.state.recipe.recipeName;
         const cookingTime = this.props.location.state.recipe.cookingTime;
         const ingeridents = this.props.location.state.recipe.ingeridents.map((ingerident, key) => (
-            <p key={key}>
+            <li key={key}>
                 {ingerident}
-            </p>
+            </li>
         ));
         const directions = this.props.location.state.recipe.directions.map((direction, index) => (
             <li key={index}>
@@ -22,14 +23,18 @@ export class SelectedRecipe extends React.Component {
         ))
 
         return (
-            <div className="recipe-parent">
-                <h2 className="recipename-h2"> {recipeName} </h2>
+            <div className="selected-recipe-parent">
+                <div className="selected-h2">
+                    <h2 className="recipename-h2"> {recipeName} </h2>
+                </div>
+                <div className="detials-div">
                 <span className="cookingtime-span">Cooking time: {cookingTime}</span>
                 <p><strong className="ingeridents-strong">Ingeridents: </strong></p>
-                <ol type="1"> {ingeridents}</ol>
+                <ol type="1" className="ingeridents-list"> {ingeridents}</ol>
                 <p><strong className="directions-strong">Directions:</strong></p>
-                <ol type="1">{directions}</ol>
-                <button type="button" onClick={() => this.props.history.goBack()}>Go Back</button>
+                <ol type="1" className="directions-list"> {directions}</ol>
+                <button type="button" className="go-back" onClick={() => this.props.history.goBack()}>Go Back</button>
+                </div>
             </div>
         );
     }

@@ -1,42 +1,40 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const {Recipe} = require('../models/recipesSchema');
+const { Recipe } = require('../models/recipesSchema');
 
 
 // GET to Hello page
 router.get('/', (req, res) => {
     Recipe.find()
-    .then(recipes => {
-        res.json({
-            recipes: recipes.map(recipe => recipe.serialize())
-        });
-    })
+        .then(recipes => {
+            res.json({
+                recipes: recipes.map(recipe => recipe.serialize())
+            });
+        })
 });
 
 router.get('/:id', (req, res) => {
     Recipe.findById(req.params.id)
-    .then(recipe => {
-        res.json(recipe.serialize());
-    })
+        .then(recipe => {
+            res.json(recipe.serialize());
+        })
 });
 
 
 router.post('/', (req, res) => {
-    console.log('Testing');
-    Recipe
-    .create({
+    console.log('Res:', req.body);
+    Recipe.create({
         recipeName: req.body.recipeName,
         ingeridents: req.body.ingeridents,
         cookingTime: req.body.cookingTime,
         directions: req.body.directions
     })
-    .then(recipe => res.status(201).json(recipe.serialize()))
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: 'Something went wrong' });
-    });
-
+        .then(recipe => res.status(201).json(recipe.serialize()))
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ error: 'Something went wrong' });
+        });
     res.json(req.body);
 
 });
