@@ -14,15 +14,13 @@ export const recipesReducer = (state = initialState, action) => {
                 recipes: action.recipes
             }]
         })
-
     } else if( action.type === actions.NEW_RECIPE){
         // return Object.assign({}, state, {
         //     textInput: [...state.textInput].concat([{ingredient: ''}])
         // })
-        return {
-            ...state,
-            textInput: [...state.textInput].concat([{ingredient: ''}])
-        }
+        return Object.assign({}, state, {
+                textInput: [...state.textInput].concat([{ingredient: ''}])
+            })
     }
     else{
         return state;

@@ -4,6 +4,8 @@ import { createRecipe } from '../actions/createRecipes';
 import Input from './Input';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+
 import './createRecipe.css';
 
 import { required, nonEmpty } from './validator';
@@ -11,11 +13,11 @@ import { required, nonEmpty } from './validator';
 export class CreateRecipes extends React.Component {
 
     onSubmit(values) {
-        // values.preventDefault();
         const { recipeName, ingeridents, cookingTime, directions } = values;
         const createMethod = { recipeName, ingeridents, cookingTime, directions };
         // this.props.dipatch(createRecipe(createMethod));
         console.log('createMethod: ', createMethod);
+        console.log('Props: ', this.props);
         this.props.createRecipe(createMethod);
         this.props.history.push('/recipes');
     }

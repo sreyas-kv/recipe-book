@@ -34,12 +34,25 @@ export const createRecipe = recipe => dispatch => {
       },
       body: JSON.stringify(recipe)
     })
-      .then(res => res.json())
-      .then(post =>
-        dispatch({
-          type: NEW_RECIPE,
-          payload: post
-        })
-      );
-  };
-  
+//     .then(res => normalizeResponseErrors(res))
+//       .then(res => res.json())
+//       .then(post =>
+//         dispatch({
+//           type: NEW_RECIPE,
+//           payload: post
+//         })
+//       );
+//   };
+   .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .catch(err => {
+        const {reason, message, location} = err;
+        if(reason === 'ValidationError'){
+            return Promise.reject(
+                new SubmissionError({
+                    [location]: message
+                })
+            );
+        }
+    });
+};

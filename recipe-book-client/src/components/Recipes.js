@@ -9,10 +9,13 @@ export class Recipes extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchRecipes());
   }
+  componentDidUpdate() {
+    this.props.dispatch(fetchRecipes());
+  }
 
   displayRecipe(recipe) {
     this.props.dispatch(displayRecipe(recipe));
-    this.props.history.push(`/SelectedRecipe/${recipe.id}`, { recipe })
+    this.props.history.push(`/SelectedRecipe/${recipe.id}`, { recipe });
   }
   render() {
     const rec = this.props.recipes.recipes.map(recipes => {
