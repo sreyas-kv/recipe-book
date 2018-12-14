@@ -24,7 +24,6 @@ export class Recipes extends React.Component {
   
     const allRecipes = this.props.recipes.recipes.map((recipe) => (
       <div className="recipe-button-div" key={recipe.id}>
-        {/* <p><a href="" className="-link" id={recipe.id} onClick={() => this.displayRecipe(recipe)}>{recipe.recipeName}</a></p> */}
         <button
           type="button"
           className="recipes-list"

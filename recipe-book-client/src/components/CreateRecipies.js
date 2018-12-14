@@ -5,13 +5,11 @@ import Input from './Input';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-
 import './createRecipe.css';
-
 import { required, nonEmpty } from './validator';
 
-export class CreateRecipes extends React.Component {
 
+export class CreateRecipes extends React.Component {
     onSubmit(values) {
         const { recipeName, ingeridents, cookingTime, directions } = values;
         const createMethod = { recipeName, ingeridents, cookingTime, directions };
