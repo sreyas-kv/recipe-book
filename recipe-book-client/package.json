@@ -2,6 +2,11 @@
   "name": "recipe",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "5.6.0",
+    "node": "10.5.0"
+  },
+
   "dependencies": {
     "jwt-decode": "^2.2.0",
     "react": "^16.6.0",
