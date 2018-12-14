@@ -1,6 +1,6 @@
 # ricetta (Recipe book) is react app for sharing recipes.
 
-Live link: 
+Live link: https://calm-sands-49088.herokuapp.com/
 
 Demo Account detials: 
 Username: firstuser123@gmail.com
