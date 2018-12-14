@@ -1,0 +1,66 @@
+.selected-recipe-parent {
+    width: 700px;
+    border-radius: 14px;
+    opacity: 0.9; 
+    margin-left: 30%;
+    background-color: white;
+    box-shadow: 10px 12px 16px 4px rgba(0, 0, 0, 0.25), 0 17px 50px 0 rgba(0, 0, 0, 0.20);
+}
+
+.selected-h2 {
+    font-size: 20px;
+    width: 400px;
+}
+
+.recipename-h2 {
+    font-family: 'Pacifico', cursive;
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+
+.details-div {
+    border: 3px green solid;
+}
+
+.cookingtime-span {
+    margin-left: 20px;
+    font-family: 'Cantarell', sans-serif;
+}
+
+.ingeridents-strong {
+    margin-left: 20px;
+    font-family: 'Cantarell', sans-serif;
+}
+
+.ingeridents-list {
+    font-family: 'Cantarell', sans-serif;
+    list-style-type: none;
+}
+
+.directions-strong {
+    font-family: 'Cantarell', sans-serif;
+    margin-left: 20px;
+}
+
+.directions-list {
+    font-family: 'Cantarell', sans-serif;
+}
+
+.go-back{
+    text-align: center;
+    border: solid 1px #FF1D61;
+    border-radius: 18px;
+    font-size: 20px;
+    background-color: #AF0438;
+    color: #EEB6C7;
+    width: 30%;
+    height: 40px;
+    margin: 20px 20px 20px 30%;
+}
+
+.go-back:hover{
+    color: #d2d2d2;
+    background-color: #790F3C;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.25), 0 17px 50px 0 rgba(0, 0, 0, 0.20);
+}
