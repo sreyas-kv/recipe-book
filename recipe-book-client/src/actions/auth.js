@@ -44,7 +44,7 @@ const storeAuthInfo = (authToken, dispatch) => {
 export const login = (username, password) => dispatch => {
     dispatch(authRequest());
     return(
-        fetch('http://localhost:8080/login', {
+        fetch('https://recipe-book-server.herokuapp.com/login', {
             method: 'POST',
             headers: {
                 'content-Type': 'application/json'
@@ -73,7 +73,7 @@ export const login = (username, password) => dispatch => {
 export const refreshAuthToken = () => (dispatch, getState) => {
     dispatch(authRequest());
     const authToken = getState().auth.authauthToken;
-    return fetch(`http://localhost:8080/refresh`, {
+    return fetch(`https://recipe-book-server.herokuapp.com/refresh`, {
         method: 'POST',
         headers: {
             Authorization: `Bearer ${authToken}`

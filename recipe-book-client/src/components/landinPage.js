@@ -19,6 +19,11 @@ export function LandingPage(props) {
                     </span>
                 </div>
             </div>
+            <div className="demo-account">
+                <span className="demo-p1">Demo Account: </span>
+                <span className="demo-p1">user:firstuser@gmail.com </span>
+                <span className="demo-p2">password:firstuser123</span>
+            </div>
         </div>
     );
 }

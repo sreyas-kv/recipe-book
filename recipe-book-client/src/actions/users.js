@@ -4,7 +4,7 @@ import {SubmissionError} from 'redux-form';
 import {normalizeResponseErrors} from './utils';
 
 export const registerUser = user => dispatch => {
-    return fetch('http://localhost:8080/signup', {
+    return fetch('https://recipe-book-server.herokuapp.com/signup', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

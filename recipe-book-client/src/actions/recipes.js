@@ -3,7 +3,7 @@ import { SubmissionError}  from 'redux-form';
 import {normalizeResponseErrors} from './utils';
 
 // import {API_BASE_URL} from '../config'
-const recipeUrl = 'http://localhost:8080/recipes';
+const recipeUrl = 'https://recipe-book-server.herokuapp.com/recipes';
 
 
 export const FETCH_RECIPES_SUCCESS = 'FETCH_RECIPES_SUCCESS';

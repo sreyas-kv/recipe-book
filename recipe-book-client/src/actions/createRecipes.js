@@ -27,7 +27,7 @@ import { NEW_RECIPE } from './recipes';
 // };
 
 export const createRecipe = recipe => dispatch => {
-    fetch('http://localhost:8080/recipes', {
+    fetch('https://recipe-book-server.herokuapp.com/', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
