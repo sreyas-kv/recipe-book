@@ -6,11 +6,20 @@ import { Link } from 'react-router-dom';
 import './recipes.css';
 
 export class Recipes extends React.Component {
+  constructor(props) {
+    super()
+    this.state = {
+      length: 0,
+    }
+  }
   componentDidMount() {
     this.props.dispatch(fetchRecipes());
   }
-  componentDidUpdate() {
-    this.props.dispatch(fetchRecipes());
+
+  componentDidUpdate(prevProps) {
+    if (this.props.recipes.recipes.length === prevProps.recipes.recipes.length) {
+       this.props.dispatch(fetchRecipes());
+    }
   }
 
   displayRecipe(recipe) {
@@ -18,31 +27,25 @@ export class Recipes extends React.Component {
     this.props.history.push(`/SelectedRecipe/${recipe.id}`, { recipe });
   }
   render() {
-    const rec = this.props.recipes.recipes.map(recipes => {
-      return recipes.ingeridents;
-    });
-  
     const allRecipes = this.props.recipes.recipes.map((recipe) => (
       <div className="recipe-button-div" key={recipe.id}>
         <button
           type="button"
           className="recipes-list"
           id={recipe.id}
-          onClick={() =>this.displayRecipe(recipe)}>{recipe.recipeName.toUpperCase()}
+          onClick={() => this.displayRecipe(recipe)}>{recipe.recipeName.toUpperCase()}
         </button>
-
       </div>
     ))
-
     return (
       <div className="recipe-parent">
-      <div className="create-link-parent">
-      <div className="inside-add">
-        <Link to="/CreateRecipe" className="createRecipe-link">add new recipe now</Link>
-        </div>
+        <div className="create-link-parent">
+          <div className="inside-add">
+            <Link to="/CreateRecipe" className="createRecipe-link">add new recipe now</Link>
+          </div>
         </div>
         <div className="recipes-container">
-        {allRecipes}
+          {allRecipes}
         </div>
       </div>
     );
@@ -50,11 +53,12 @@ export class Recipes extends React.Component {
 }
 
 Recipes.defaultProps = {
-  title: 'This is default props for Recipes'
+  title: 'This is default props for Recipes',
+  recipeLength: 0,
 }
 
 const mapStateToProps = state => ({
-  recipes: state.recipes
+  recipes: state.recipes,
 });
 
 export default connect(mapStateToProps)(Recipes);

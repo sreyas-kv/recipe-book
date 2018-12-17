@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
-
 import Header from './Header';
 // import SignupForm from './SignupForm';
 import Recipes from './Recipes';
 import LandingPage from './landinPage';
-import SignupPage from './singup-page';
-import './home.css';
-
 import { refreshAuthToken } from '../actions/auth';
 import CreateRecipes from './CreateRecipies';
 import { SelectedRecipe } from './SelectedRecipe';
+import SignupPage from './singup-page';
+import './home.css';
 
 export class App extends React.Component {
   componentDidUpdate(prevProps) {

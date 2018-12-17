@@ -1,6 +1,6 @@
-import { SubmissionError}  from 'redux-form';
+// import { SubmissionError}  from 'redux-form';
 
-import {normalizeResponseErrors} from './utils';
+// import {normalizeResponseErrors} from './utils';
 
 // import {API_BASE_URL} from '../config'
 const recipeUrl = 'https://recipe-book-server.herokuapp.com/recipes';
@@ -35,10 +35,10 @@ export const displayRecipe = recipes => ({
     recipes
 });
 
-export const ADD_INGREDIENTS = 'ADD_INGREDIENTS';
-export const addIngredients = ingredient => ({
-    type: ADD_INGREDIENTS
-});
+// export const ADD_INGREDIENTS = 'ADD_INGREDIENTS';
+// export const addIngredients = ingredient => ({
+//     type: ADD_INGREDIENTS
+// });
 
 //Create new recipe
 // export const createRecipes = recipe => dispatch => {

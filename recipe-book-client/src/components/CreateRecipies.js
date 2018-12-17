@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { createRecipe } from '../actions/createRecipes';
+// import { fetchRecipes } from '../actions/recipes';
 import Input from './Input';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -13,16 +14,10 @@ export class CreateRecipes extends React.Component {
     onSubmit(values) {
         const { recipeName, ingeridents, cookingTime, directions } = values;
         const createMethod = { recipeName, ingeridents, cookingTime, directions };
-        // this.props.dipatch(createRecipe(createMethod));
-        console.log('createMethod: ', createMethod);
-        console.log('Props: ', this.props);
         this.props.createRecipe(createMethod);
+        // this.props.dispatch(fetchRecipes());
         this.props.history.push('/recipes');
     }
-    // backToRecipes = () => {
-    //     <Redirect to='/Recipes' />
-    // }
-
     render() {
         const renderField = ({ input, label, type, meta: { touched, error } }) =>
             <span className="addIngerident-span">
@@ -87,9 +82,9 @@ export class CreateRecipes extends React.Component {
                 <form
                     className="createRecipe-form"
                     onSubmit={
-                    this.props.handleSubmit(values => {
-                             this.onSubmit(values);
-                         })}>
+                        this.props.handleSubmit(values => {
+                            this.onSubmit(values);
+                        })}>
                     <Field className="recipename" component={Input} type="text" name="recipeName" placeholder="Enter recipe name" validate={[required, nonEmpty]} />
                     <Field className="cookingtime" component={Input} type="text" name="cookingTime" id="cookingTime" placeholder="Coocking time" validate={[required, nonEmpty]} />
                     <FieldArray name="ingeridents" component={renderIngerident} />
@@ -126,5 +121,5 @@ CreateRecipes = connect(
     null, { createRecipe })(CreateRecipes);
 
 export default reduxForm({
-        form: 'createRecipe'
-    })(CreateRecipes);
+    form: 'createRecipe'
+})(CreateRecipes);

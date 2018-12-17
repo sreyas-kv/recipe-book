@@ -2,7 +2,7 @@ import {SubmissionError} from 'redux-form';
 
 // import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
-import { NEW_RECIPE } from './recipes';
+// import { NEW_RECIPE } from './recipes';
 
 // export const createRecipe = recipe => {
     // return fetch('http://localhost:8080/recipes',{
@@ -27,7 +27,7 @@ import { NEW_RECIPE } from './recipes';
 // };
 
 export const createRecipe = recipe => dispatch => {
-    fetch('https://recipe-book-server.herokuapp.com/', {
+    fetch('https://recipe-book-server.herokuapp.com/recipes', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
