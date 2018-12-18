@@ -6,7 +6,11 @@ Demo Account detials:
 Username: firstuser123@gmail.com
 Password: firstuser123
 
-To use this app the user needs to signup with email.
-On successful signup the user will be navigated to list of recipes and will be able to view different type of recipes and will also be able to create new recipes.
+Ricetta is a simple to use recipe app that lets users store and access recipes.
 
-Hope you enjoy using this reciped app...
+User instructions: 
+
+To use this app the user needs to signup with email.
+On successful signup the user will be navigated to a sample list of recipes. The user can create new recipes and add it to the list.
+
+Have fun!
