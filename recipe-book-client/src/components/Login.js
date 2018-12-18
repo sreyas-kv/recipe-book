@@ -36,7 +36,7 @@ export class Login extends React.Component {
             name="username"
             className="user-textbox"
             validate={[required, nonEmpty]}
-            placeholder="Enter email"
+            placeholder="firstuser@gmail.com"
           /> <br />
           <Field component={Input}
             type="password"
@@ -44,9 +44,8 @@ export class Login extends React.Component {
             className="password-field"
             id="password"
             validate={[required, nonEmpty]}
-            placeholder="Enter password"
+            placeholder="firstuser123"
           />  {error}<br />
-          <br />
           {invalidLoginError}<br />
           <button className="login-button" disabled={this.props.pristine || this.props.submitting}>login</button>
         </form>

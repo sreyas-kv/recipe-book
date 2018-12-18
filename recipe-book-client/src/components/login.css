@@ -10,9 +10,9 @@
     font-size: 20px;
     background-color: #660033;
     color: #d2d2d2;
-    width: 60%;
+    width: 180px;
     /* height: 20px; */
-    margin-left: 10%;
+    margin-left: 20px;
 }
 
 .login-button:disabled, .login-button[disabled] {
@@ -41,7 +41,7 @@
 }
 
 .user-textbox::placeholder {
-    color: #d2d2d2;
+    color: rgb(107, 117, 145);
 }
 
 .password-field {
@@ -59,7 +59,7 @@
 }
 
 .password-field::placeholder {
-    color: #d2d2d2;
+    color: rgb(107, 117, 145);
 }
 
 .incorrect-login {

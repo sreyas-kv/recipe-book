@@ -10,19 +10,21 @@ export function LandingPage(props) {
         return <Redirect to="/Recipes" />;
     }
     return (
-        <div className="landing-page">
-            <h2 className="welcome-note">be your own masterchef</h2>
-            <div className="login-screen">
-                <Login /> <br />
-                <div className="link-div">
-                    <span className="signup-span">Don't have account? <Link to="/signup" className="signup-link">Signup</Link>
-                    </span>
+        <div className="landing-parent">
+            <div className="landing-page">
+                <h2 className="welcome-note">be your own masterchef</h2>
+                <div className="login-screen">
+                    <Login />
+                    <div className="link-div">
+                        <span className="signup-span">New here? <Link to="/signup" className="signup-link">Signup!</Link>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div className="demo-account">
-                <span className="demo-p1">Demo Account: </span>
-                <span className="demo-p1">user:firstuser@gmail.com </span>
-                <span className="demo-p2">password:firstuser123</span>
+                {/* <div className="demo-account">
+                    <span className="demo-p1">Demo Account: </span>
+                    <span className="demo-p1">user:firstuser@gmail.com </span>
+                    <span className="demo-p2">password:firstuser123</span>
+                </div> */}
             </div>
         </div>
     );

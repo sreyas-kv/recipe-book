@@ -20,13 +20,17 @@
     font-size: 18px;
     margin-left: 5%;
     margin-right: 30%;
-    border: 1px solid red;
+    /* border: 1px solid tomato; */
     border-radius: 50px;
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
-    width: 145px;
+    width: 155px;
     padding-left: 5px;
     padding-right: 5px;
     background-color: #85144b;
+}
+
+.logout {
+    margin-top: 15px;
 }
 
 .inside-add:hover {
@@ -39,17 +43,22 @@
     color: #FF4136;
 }
 
+.logout-link{
+    margin-left: 40px; 
+    width: 100px;
+}
+
 .recipe-button-div {
     width: 45%;
     margin-left: 30%;
     margin-right: 30%;
 }
 
-.demo-account{
-width: 180px;
-/* border: solid red 3px; */
-height: 40px;
-font-size: 14px;
-margin-left: 78%;
-margin-top: 4%
+.demo-account {
+    width: 180px;
+    /* border: solid red 3px; */
+    height: 40px;
+    font-size: 14px;
+    margin-left: 78%;
+    margin-top: 4%
 }

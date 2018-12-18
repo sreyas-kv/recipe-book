@@ -43,6 +43,9 @@ export class Recipes extends React.Component {
           <div className="inside-add">
             <Link to="/CreateRecipe" className="createRecipe-link">add new recipe now</Link>
           </div>
+          <div className="logout inside-add ">
+          <Link to="/" className="logout-link createRecipe-link">logout</Link>
+          </div>
         </div>
         <div className="recipes-container">
           {allRecipes}

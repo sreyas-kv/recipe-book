@@ -1,9 +1,9 @@
 .form-div {
     font-family: 'Righteous', cursive;
-    border: #950740 solid 1px;
-    width: 45%;
-    margin-left: 30%;
-    margin-right: 30%;
+    /* border: #950740 solid 1px; */
+    width: 490px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 8px;
     background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
 }
@@ -27,33 +27,33 @@
     /* margin-left: 80px; */
     margin: 15px 0 0 10px;
     /* width: 350px; */
-    width: 40%;
+    width: 150px;
     border-radius: 12px;
     border: none;
     padding-left: 15px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .cookingtime {
     font-family: 'Cairo', sans-serif;
     margin-left: 20px;
     margin-top: 15px;
-    width: 19%;
+    width: 120px;
     border-radius: 12px;
     border: none;
     padding-left: 8px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .add-ingredients, .add-instructions {
     font-family: 'Cairo', sans-serif;
     text-align: center;
     border-radius: 6px;
-    font-size: 15px;
+    font-size: 12px;
     background-color: #86C232;
     border: 1px solid #61892F;
     color: #474B4F;
-    margin: 10px 10px 10px 10px;
+    margin: 10px 10px 0 10px;
 }
 
 .add-ingredients:active, .add-instructions:active {
@@ -75,7 +75,7 @@
     text-align: center;
     /* border: #160A47; */
     border-radius: 18px;
-    font-size: 15px;
+    font-size: 12px;
     background-color: #E7717D;
     border: 1px solid #950740;
     color: #6F2232;
@@ -92,14 +92,15 @@
 .done, .back {
     font-family: 'Cairo', sans-serif;
     text-align: center;
-    border: #160A47 solid 1px;
+    /* border: #160A47 solid 1px; */
     border-radius: 6px;
     font-size: 15px;
     background-color: #8EE4AF;
     color: #160A47;
-    width: 15%;
+    width: 100px;
     height: 30px;
-    margin: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .done:hover, .back:hover {
@@ -110,7 +111,7 @@
 }
 
 .done {
-    margin-left: 30%;
+margin-left: 50px;
 }
 .done:disabled{
     background-color: #6F7DAf;
@@ -138,5 +139,33 @@
     border: none;
     padding-left: 10px;
     font-size: 15px;
-    padding-left: 15px;
+    /* padding-left: 15px; */
+    margin-left: 10px;
+}
+
+
+/* Responsive Design */
+
+.form-div {
+    max-width: 1000px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.form-div::before,
+.form-div::after {
+    display: table;
+    content: '';
+}
+
+.form-div::after {
+    clear: both;
+}
+
+@media only screen and (max-width: 640px) {
+    .form-div{
+        width: auto;
+        ;
+    }
 }

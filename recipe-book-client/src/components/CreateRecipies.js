@@ -31,14 +31,14 @@ export class CreateRecipes extends React.Component {
 
         const renderIngerident = ({ fields, meta: { error } }) =>
             <div className="addIngredients-div">
-                <button className="add-ingredients" type="button" onClick={() => fields.push()}>add ingeridents</button>
+                <button className="add-ingredients" type="button" onClick={() => fields.push()}>add ingredient</button>
                 {fields.map((ingerident, index) =>
                     <div className="addOption-div" key={index}>
                         <Field
                             name={ingerident}
                             type="text"
                             component={renderField}
-                            label={`Ingerident ${index + 1}`}
+                            label={`Ingredient ${index + 1}`}
                         />
                         <button
                             type="button"
@@ -55,7 +55,7 @@ export class CreateRecipes extends React.Component {
 
         const renderDirections = ({ fields, meta: { error } }) =>
             <div className="addInstructions-div">
-                <button className="add-instructions" type="button" onClick={() => fields.push()}>add instructions</button>
+                <button className="add-instructions" type="button" onClick={() => fields.push()}>add instruction</button>
                 {fields.map((direction, index) =>
                     <div className="directions-div" key={index}>
                         <Field
@@ -85,8 +85,8 @@ export class CreateRecipes extends React.Component {
                         this.props.handleSubmit(values => {
                             this.onSubmit(values);
                         })}>
-                    <Field className="recipename" component={Input} type="text" name="recipeName" placeholder="Enter recipe name" validate={[required, nonEmpty]} />
-                    <Field className="cookingtime" component={Input} type="text" name="cookingTime" id="cookingTime" placeholder="Coocking time" validate={[required, nonEmpty]} />
+                    <Field className="recipename" component={Input} type="text" name="recipeName" placeholder="recipe name" validate={[required, nonEmpty]} />
+                    <Field className="cookingtime" component={Input} type="text" name="cookingTime" id="cookingTime" placeholder="cooking time" validate={[required, nonEmpty]} />
                     <FieldArray name="ingeridents" component={renderIngerident} />
                     <FieldArray name="directions" component={renderDirections} />
                     <button

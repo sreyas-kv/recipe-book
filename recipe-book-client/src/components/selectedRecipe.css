@@ -1,26 +1,22 @@
 .selected-recipe-parent {
-    width: 700px;
+    /* width: 700px; */
     border-radius: 14px;
     opacity: 0.9; 
-    margin-left: 30%;
+    border: solid 3px red;
+    /* margin-left: auto; */
+    /* margin-right: 40px; */
     background-color: white;
     box-shadow: 10px 12px 16px 4px rgba(0, 0, 0, 0.25), 0 17px 50px 0 rgba(0, 0, 0, 0.20);
 }
 
 .selected-h2 {
     font-size: 20px;
-    width: 400px;
 }
 
 .recipename-h2 {
     font-family: 'Pacifico', cursive;
     position: relative;
-    top: 50%;
-    left: 50%;
-}
-
-.details-div {
-    border: 3px green solid;
+    top: 10px;
 }
 
 .cookingtime-span {
@@ -54,13 +50,47 @@
     font-size: 20px;
     background-color: #AF0438;
     color: #EEB6C7;
-    width: 30%;
+    width: 120px;
     height: 40px;
-    margin: 20px 20px 20px 30%;
+    /* margin: 20px 20px 20px 200px; */
+}
+
+.back-button{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
 }
 
 .go-back:hover{
     color: #d2d2d2;
     background-color: #790F3C;
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.25), 0 17px 50px 0 rgba(0, 0, 0, 0.20);
+}
+
+
+/* Responsive Design */
+
+.selected-recipe-parent {
+    max-width: 1000px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.selected-recipe-parent::before,
+.selected-recipe-parent::after {
+    display: table;
+    content: '';
+}
+
+.selected-recipe-parent::after {
+    clear: both;
+}
+
+@media only screen and (max-width: 640px) {
+    .selected-recipe-parent{
+        width: auto;
+        ;
+    }
 }

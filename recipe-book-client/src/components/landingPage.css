@@ -4,8 +4,8 @@
     text-align: center;
     font-size: 24px;
 }
-
 .landing-page {
+    /* display: inline-grid; */
     border: none;
     margin-left: auto;
     margin-right: auto;
@@ -16,13 +16,15 @@
 }
 
 .login-screen {
+    /* display: inline-grid; */
     border: none;
     border-radius: 8px;
     background-color: #464474;
-    width: 50%;
-    height: 60%;
-    margin-left: 25%;
-    margin-top: 7%;
+    width: 310px;
+    height: 240px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.25), 0 17px 50px 0 rgba(0, 0, 0, 0.20);
 }
 
@@ -46,7 +48,44 @@
     color: #ffcbba;
 }
 
+.link-div {
+    margin-top: 10px;
+}
+
 .signup-span {
-    margin: 2px 10px 10px 40px;
+    margin: 2px 5px 10px 30px;
     color: #e56443;
+}
+
+
+/* Responsive Design */
+
+.landing-page {
+    max-width: 1000px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.landing-page::before,
+.landing-page::after {
+    display: table;
+    content: '';
+}
+
+.landing-page::after {
+    clear: both;
+}
+
+/* .landing-page {
+    float: left;
+    padding-left: 1.04166666%;
+    padding-right: 1.04166666%;
+} */
+
+@media only screen and (max-width: 640px) {
+    .landing-page{
+        width: auto;
+        ;
+    }
 }
