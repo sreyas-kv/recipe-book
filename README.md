@@ -13,7 +13,8 @@ User instructions:
 To use this app the user needs to signup with email.
 On successful signup the user will be navigated to a sample list of recipes. The user can create new recipes and add it to the list.
 
-Ricetta is buil with ReactJS, Node and Mongo
+Ricetta is built with ReactJS, Node and Mongo
+
 Have fun!
 
 Some screenshots:
